@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package registry;
+
+option java_package = "com.viewpointe.ocs";
+option java_multiple_files = true;
+
+
+message RegistryRequest {
+  string encodedJson = 1;
+}
+
+
+message RegistryResponse {
+  string decodedJson = 1;
+}
+
+service RegistryService {
+  // bi-directional stream
+  rpc encodeDecode(stream RegistryRequest) returns (stream RegistryResponse);
+}
+
+
+
